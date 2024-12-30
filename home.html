@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('diag3.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: white;
+        }
+
+        .menu {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .menu-options {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .menu-options a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .menu-options a:last-child {
+            border-bottom: none;
+        }
+
+        .menu-options a:hover {
+            background-color: #49454f;
+            color: white;
+        }
+
+        .diagnosis-button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+
+        }
+
+        .diagnosis-button:hover {
+            background-color: #3f4042;
+        }
+
+        .content {
+            padding: 20px;
+        }
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .chatbot-button:hover {
+            background-color: #949090;
+        }
+
+        .chatbot-button img {
+            width: 30px;
+            height: 30px;
+        }
+        .health-tips {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .health-tips h2 {
+            text-align: center;
+            color: #000000;
+        }
+
+        .health-tips p {
+            text-align: justify;
+            line-height: 1.6;
+            color: #000000;
+        }
+
+        .health-tips ul {
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Clinical Diagnosis</h2>
+        <div class="menu" id="menu">&#x22EE;</div>
+        <div class="menu-options" id="menu-options">
+            <a href="#" id="scanner">Scanner</a>
+            <a href="#" id="data-field">Data Field</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <br><br><br><br><br><br>
+        <div class="health-tips">
+            <h2>About</h2>
+            <p>
+                Diagnosis prediction involves using data and computational methods to identify or predict medical conditions. 
+                It integrates medical knowledge, patient data, and advanced technologies, including machine learning and AI, 
+                to enhance diagnostic accuracy and efficiency. This approach helps in early detection, personalized treatments, 
+                and overall improved healthcare outcomes.
+            </p>
+            <center><button class="diagnosis-button" id="diagnosis-button">Diagnosis</button></center>
+        </div>
+    </div>
+    <a href="chat11.html">
+        <button class="chatbot-button" id="chatbot-button">
+            <img src="chatbot.png" alt="Chat Bot">
+        </button>
+    </a>
+    <script>
+        const menu = document.getElementById('menu');
+        const menuOptions = document.getElementById('menu-options');
+
+        menu.addEventListener('click', () => {
+            menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !menuOptions.contains(e.target)) {
+                menuOptions.style.display = 'none';
+            }
+        });
+
+        // Redirect to index1.html on Diagnosis button click
+        document.getElementById('diagnosis-button').addEventListener('click', () => {
+            window.location.href = './index1.html';
+        });
+    </script>
+</body>
+</html>

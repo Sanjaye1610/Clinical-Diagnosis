@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+        }
+
+        .dashboard {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px 15px;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <a href="#">Overview</a>
+            <a href="#">Analytics</a>
+            <a href="#">Settings</a>
+            <a href="#">Profile</a>
+        </div>
+        <div class="main">
+            <div class="header">
+                <h1>Welcome Back</h1>
+                <div class="user-info">
+                    <img src="https://via.placeholder.com/50" alt="User">
+                    <span>User Name</span>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">Widget 1</div>
+                <div class="card">Widget 2</div>
+                <div class="card">Widget 3</div>
+                <div class="card">Widget 4</div>
+            </div>
+            <div class="chart">
+                <h2>Chart</h2>
+                <canvas id="chart"></canvas>
+            </div>
+            <div class="calendar">
+                <h2>Calendar</h2>
+                <p>December 2024</p>
+                <div>Calendar Content Here</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('chart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [10, 20, 30, 40],
+                    backgroundColor: ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+</body>
+</html>

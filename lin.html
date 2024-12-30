@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('lo6.jpg');
+            display: flex;
+            justify-content: center;
+            background-repeat: no-repeat;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-size: cover;
+            bac
+        }
+        .login-container {
+            
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 20px 8px rgba(0, 0, 8, 0.2);
+            width: 350px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 50px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block ;
+            margin-bottom: 5px;
+            font-weight: 50px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"] 
+        {
+            width: 95%;
+            padding: 8px;
+            border: 2px solid #595252;
+            border-radius: 14px;
+        }
+        .form-group .radio-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #414141;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Sign up</h2>
+        <form id="signUpForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name"  required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" pattern="[a-zA-Z0-9]+" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age"  min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="phone no.">Mobile No.:</label>
+                <input type="tel" id="phone" name="phone"  pattern="[0-9]+" maxlength="10" required>
+            </div>
+            <div class="form-group">
+                <label>Sex:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="sex" value="male" required> Male</label>
+                    <label><input type="radio" name="sex" value="female"> Female</label>
+                    <label><input type="radio" name="sex" value="other"> Other</label>
+                </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"  pattern="[a-zA-Z0-9]+" required>
+            </div>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signUpForm').addEventListener('submit', function (e) {
+            e.preventDefault(); 
+            const formData = {
+                name: document.getElementById('name').value,
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value
+            };
+            sessionStorage.setItem('formData', JSON.stringify(formData));
+
+            alert('Sign-up successful! You can now log in.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

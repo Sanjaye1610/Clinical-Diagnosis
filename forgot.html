@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Forgot Password</h2>
+    <form id="forgot-password-form">
+      <label for="phone-number">Enter your Phone Number:</label>
+      <input type="tel" id="phone-number" placeholder="e.g., +1234567890" required>
+      <button type="button" id="send-otp">Send OTP</button>
+      <div id="otp-section" style="display: none;">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp" placeholder="Enter OTP" required>
+        <button type="button" id="verify-otp">Verify OTP</button>
+      </div>
+    </form>
+    <p id="response-message"></p>
+  </div>
+  <script>
+    const form = document.getElementById("forgot-password-form");
+    const phoneNumberInput = document.getElementById("phone-number");
+    const otpSection = document.getElementById("otp-section");
+    const otpInput = document.getElementById("otp");
+    const responseMessage = document.getElementById("response-message");
+
+    document.getElementById("send-otp").addEventListener("click", () => {
+      const phoneNumber = phoneNumberInput.value;
+      fetch("/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phoneNumber }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          responseMessage.textContent = data.message;
+          if (data.success) otpSection.style.display = "block";
+        })
+        .catch((err) => console.error(err));
+    });
+
+    document.getElementById("verify-otp").addEventListener("click", () => {
+      const otp = otpInput.value;
+      fetch("/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ otp }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          responseMessage.textContent = data.message;
+          if (data.success) alert("OTP Verified! You can reset your password now.");
+        })
+        .catch((err) => console.error(err));
+    });
+  </script>
+</body>
+</html>
