@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+      background-size: cover;
+    
+    }
+
+    .container {
+      display: flex;
+      width: 50%;
+      max-width: 1300px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 0px;
+      overflow: hidden;
+    }
+
+    .signup-form {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .signup-form h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .signup-form p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .signup-form input[type="text"],
+    .signup-form input[type="email"],
+    .signup-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .signup-form input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .signup-form label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .signup-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #000;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .signup-form button:hover {
+      background-color: #444;
+    }
+
+    .info {
+      flex: 1;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .info h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .info p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .info img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .chatbot-button:hover {
+            background-color: #949090;
+        }
+
+        .chatbot-button img {
+            width: 30px;
+            height: 30px;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="signup-form">
+      <h2>Create Your Account</h2>
+      <p>Welcome back! Please enter your details.</p>
+      <button onclick="signUpWithGoogle()">Sign up with Google</button>
+      <p style="text-align: center; margin: 10px 0;">OR</p>
+      <form id="signupForm">
+        <br>
+        <input type="text" placeholder="username" required>
+        <input type="email" placeholder="email" required>
+        <input type="password" placeholder="password" required>
+        <input type="password" placeholder="confirm password" required> 
+        <br>
+        <div>
+          <input type="checkbox" id="terms" required>
+          <label  for="terms">I accept all terms & conditions.</label>
+        </div>
+        <br>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="login.html" style="color: rgb(26, 26, 32);">Sign in</a></p>
+    </div>
+    <div class="info">
+      <h2>Welcome To Clinical Diagnosis!</h2>
+      <p>Join now to predict. Lorem ipsum dolor sit amet consectetur adipisicing elit. Discover the best features and services for easy transactions.</p>
+      <img src="register.gif" alt="Sales Report">
+    </div>
+  </div>
+  <a href="chat11.html">
+    <button class="chatbot-button" id="chatbot-button">
+        <img src="chatbot.png" alt="Chat Bot">
+    </button>
+</a>
+  <script>
+   document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Collect user details
+    const username = document.querySelector('input[placeholder="username"]').value;
+    const email = document.querySelector('input[placeholder="email"]').value;
+    const password = document.querySelector('input[placeholder="password"]').value;
+    const confirmPassword = document.querySelector('input[placeholder="confirm password"]').value;
+
+    // Validate form data
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+
+    // Save user details in localStorage
+    localStorage.setItem('userDetails', JSON.stringify({
+      username,
+      email,
+      password
+    }));
+
+    alert('Sign up successful! You can now log in.');
+    window.location.href = 'login.html'; // Redirect to login page
+  });
+
+  function signUpWithGoogle() {
+    alert('Google Sign Up feature coming soon!');
+  }
+</script>
+
+<!-- Login Page -->
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get user input
+    const enteredUsername = document.getElementById('username').value;
+    const enteredPassword = document.getElementById('password').value;
+
+    // Retrieve stored user details from localStorage
+    const storedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+    // Validate credentials
+    if (
+      storedUserDetails &&
+      enteredUsername === storedUserDetails.username &&
+      enteredPassword === storedUserDetails.password
+    ) {
+      alert('Logged in successfully!');
+      window.location.href = 'login.html'; // Redirect to dashboard or desired page
+    } else {
+      alert('Invalid username or password!');
+    }
+  });
+  </script>
+</body>
+</html>

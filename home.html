@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Diagnosis</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: transparent;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #ffffff;
+    }
+
+    header nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px;
+      position: relative;
+      background-color: #000000;
+    }
+
+    .hero .content {
+      max-width: 50%;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .hero h2 span {
+      color: #888f92;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      color: #ffffff;
+    }
+
+    .hero .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .hero .buttons a {
+      padding: 15px 25px;
+      font-size: 16px;
+      text-decoration: none;
+      color: #0b0226;
+      background-color: #ffffff;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .hero .buttons a:hover {
+      background-color: #808689;
+      color: #ffffff;
+    }
+
+    .hero .image {
+      position: relative;
+      max-width: 30%;
+    }
+
+    .hero .image img {
+      width: 100%;
+      height: auto;
+      border-radius: 50px;
+    }
+    .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .chatbot-button:hover {
+            background-color: #949090;
+        }
+
+        .chatbot-button img {
+            width: 30px;
+            height: 30px;
+        }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Clinical Diagnosis</h1>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="#">What we do</a>
+    <a href="#">scan</a>
+    <a href="#">Our Method</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="content">
+    <h2>Clinical <span>Diagnosis</span><br> Of X-ray scan reports.</h2>
+    <p>
+        An X-ray scan report provides a detailed analysis of internal body structures using electromagnetic radiation to capture images of bones, organs, or tissues.
+    To predict the disease in your x-ray click diagnosis.</p>
+    <div class="buttons">
+      <a id="diagnosisBtn" href="#">Diagnosis</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="image">
+    <img src="home.webp" alt="image">
+  </div>
+</div>
+<a href="chat11.html">
+  <button class="chatbot-button" id="chatbot-button">
+      <img src="chatbot.png" alt="Chat Bot">
+  </button>
+</a>
+<script>
+  // JavaScript to handle button redirection
+  document.getElementById('diagnosisBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    window.location.href = 'http://127.0.0.1:5000'; // Redirect to http.html
+  });
+</script>
+
+</body>
+</html>
